@@ -38,7 +38,3 @@ The application follows a guided flow:
 User inputs age → eligibility check → location input → confirmation → Aadhaar verification (simulated) → voting guidance.
 
 ---
-
-## Note
-
-The AI assistant includes fallback handling to ensure the application remains functional if the API is unavailable.
