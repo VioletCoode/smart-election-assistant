@@ -47,6 +47,11 @@ Stay strictly within the context of Indian Elections and provide help with regis
 `;
 
 export async function getAssistantResponse(messages: Message[]): Promise<string> {
+  // Check if the API key is missing before trying to use the AI service
+  if (!process.env.GEMINI_API_KEY) {
+    return "AI assistant is temporarily unavailable. Please refer to the election guidance provided in the app.";
+  }
+
   // Check for common misinformation or simple triggers first (Local Heuristic)
   const lastMessage = messages[messages.length - 1].content.toLowerCase();
 
@@ -76,6 +81,6 @@ export async function getAssistantResponse(messages: Message[]): Promise<string>
     return response.text || "I'm sorry, I couldn't process that. Please try again.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "I'm having a bit of trouble connecting to my brain right now. Please try again in a moment!";
+    return "AI assistant is temporarily unavailable. Please refer to the election guidance provided in the app.";
   }
 }
